@@ -1,0 +1,104 @@
+html {
+    height:100%;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .75em;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.iwcontent {
+    width: 300px;
+}
+.rounded {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.shaded {
+    border: 1px solid orange;
+    -webkit-box-shadow: 3px 3px 3px gray;
+    -moz-box-shadow: 3px 3px 3px gray;
+    box-shadow: 3px 3px 3px gray;
+}
+.logo {
+    width:120px;
+    height:auto;
+}
+.button {
+    width:120px;
+    margin:0 0 5px 0;
+}
+
+.list {
+    margin-top:10px;
+    /*display:inline-block;
+    vertical-align:top;
+    overflow:hidden;
+    background-color:white;
+    border:solid black 2px;*/
+}
+.list h2 {
+    margin: 3px 0px 3px 0px;
+    padding: 0;
+    /*color:black;
+    text-transform:uppercase;*/
+}
+.list select {
+    font-family:"Courier New", Courier, monospace;
+    font-size:1em;
+    /*width:150px;*/
+    /*padding: 5px 10px 10px 10px;
+    margin:-0px -15px -5px -5px;*/
+}
+#notification {
+    top:20px;
+    left:50%;
+    width:10em;
+    height:2em;
+    margin-left:-5em; /*set to a negative number 1/2 of your width*/
+    border:2px solid black;
+    color: black;
+    background-color:#f3f3f3;
+    position:absolute;
+    visibility:hidden;
+    z-index:100;
+    font-size:1.5em;
+    text-align:center;
+    line-height:2em;
+}
+#nav {
+    padding:10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 99;
+    text-align:center;
+    /*width:160px;*/
+    color:white;
+    border:2px solid orange;
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0);
+    /* RGBa opacity */
+    background: rgba(0, 0, 0, 0.6);
+}
+#summary, #filter {
+    /*width:120px;*/
+    /*margin: 0 auto;*/
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align:left;
+    /*white-space:nowrap;*/
+}
+#map {
+    text-align:center;
+    color:black;
+    background-color:lightgray;
+    width:100%;
+    height:100%;
+}
