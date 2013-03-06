@@ -11,7 +11,7 @@ Basic HoneyBadger API
 
 This method geolocates the target based on the source IP of the request and assigns the resolved location to the given target and agent.
 
-Example:
+Example: (Method: GET)
 
 ```http://<path_to_honeybadger>/service.php?target=<target_name>&agent=<agent_name>```
 
@@ -19,7 +19,7 @@ Example:
 
 This method accepts previously resolved location data for the given target and agent.
 
-Example:
+Example: (Method: GET)
 
 ```http://<path_to_honeybadger>/service.php?target=<target_name>&agent=<agent_name>&lat=<latitude>&lng=<longitude>&acc=<accuracy>```
 
@@ -39,9 +39,13 @@ OS X:
 
 ```/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s```
 
-Example:
+Example: (Method: POST)
 
-```http://<path_to_honeybadger>/service.php?target=<target_name>&agent=<agent_name>&os=<operating_system>&data=<base64_data>```
+```http://<path_to_honeybadger>/service.php```
+
+POST Payload:
+
+```target=<target_name>&agent=<agent_name>&os=<operating_system>&data=<base64_data>```
 
 ### Universal Parameters
 
