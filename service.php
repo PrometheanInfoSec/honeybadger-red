@@ -214,11 +214,16 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
     } else {
         $comment = '';
     }
+    if ($_SERVER['QUERY_STRING'] !== '') {
+        $querystr = $_SERVER['QUERY_STRING'];
+    } else {
+        $querystr = 'POST';
+    }
     $ip          = $_SERVER['REMOTE_ADDR'];
     $port        = $_SERVER['REMOTE_PORT'];
     $useragent   = $_SERVER['HTTP_USER_AGENT'];
     logger(sprintf('[*] Connection from %s @ %s:%s via %s', $target, $ip, $port, $agent));
-    logger(sprintf('[*] Query String: ?%s', $_SERVER['QUERY_STRING']));
+    logger(sprintf('[*] Query String: %s', $querystr));
     logger(sprintf('[*] User-Agent: %s', $useragent));
     logger(sprintf('[*] Comment: %s', $comment));
 
