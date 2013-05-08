@@ -1,0 +1,47 @@
+<VirtualHost *:80>
+
+	ServerAdmin https://bitbucket.org/LaNMaSteR53/honeybadger/issues
+	ServerName honeybadger.lanmaster53.com
+	DocumentRoot /srv/http/hb
+	DirectoryIndex index.php
+
+	<Directory /srv/http/hb/>
+		Options -Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		Allow from all
+		# remove php extension
+		#RewriteEngine On
+		#RewriteRule ^/?([^.?]+)$ $1.php
+	</Directory>
+
+	<Directory /srv/http/hb/include/>
+		Options -Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order deny,allow
+		Deny from all
+	</Directory>
+
+	<Directory /srv/http/hb/data/>
+		Options -Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order deny,allow
+		Deny from all
+	</Directory>
+
+	<Directory /srv/http/hb/admin/>
+		Options -Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order deny,allow
+		Deny from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
