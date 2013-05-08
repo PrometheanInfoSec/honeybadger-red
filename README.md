@@ -9,10 +9,10 @@ The associated Metasploit Framework modules can be found [here](https://github.c
 ### Pre-requisites
 
 * PHP
-* *Python
-* *SQLite3
+* \*Python
+* \*SQLite3
 
-*installed on most *nix platforms by default.
+\*installed on most *nix platforms by default.
 
 ### Setup
 
