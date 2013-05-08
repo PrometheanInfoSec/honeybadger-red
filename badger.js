@@ -2,7 +2,7 @@
 // make array of markers to cycle through all windows (future)
 var lastMarkerObj = new google.maps.Marker();
 var accMarkerObj = new google.maps.Marker();
-var servicePath = 'service.php';
+var servicePath = 'badger.php';
 var sessionJson = null;
 
 function loadPanel() {
@@ -242,7 +242,7 @@ function tick(diffTime){
     window.setTimeout(function() { tick(diffTime); },1000);
 }
 
-function remove(type) {
+function purge(type) {
 	if (confirm("Are you sure you want to purge the "+type+"?")) {
         $.get(servicePath, 'purge='+type, function(data){
         	var json = $.parseJSON(data);

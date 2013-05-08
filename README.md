@@ -1,11 +1,28 @@
 A framework for targeted geolocation.
 
-As seen in the presentation "Hide and Seek: Post-Exploitation Style" from ShmooCon 2013.
+As seen in the presentation "[Hide and Seek: Post-Exploitation Style](http://lanmaster53.com/talks/#shmoocon2013)" from ShmooCon 2013.
 
-Associated Metasploit Framework modules can be found [here](https://github.com/v10l3nt/metasploit-framework/tree/master/modules/auxiliary/badger).
+The associated Metasploit Framework modules can be found [here](https://github.com/v10l3nt/metasploit-framework/tree/master/modules/auxiliary/badger).
 
-Basic HoneyBadger API
----------------------
+## Getting Started
+
+### Pre-requisites
+
+* PHP
+* *Python
+* *SQLite3
+
+*installed on most *nix platforms by default.
+
+### Setup
+
+1. Copy the contents of the repository into the server/virtual host web root.
+2. Configure the web server/virtual host to restrict direct access to the "include", "data" and "admin" directories.
+3. Initialize the database and logging system by visiting the UI in a browser.
+4. Create a user with the "create_user.py" script in the admin directory. If this fails, it is most likely due to a missing pre-requisite or failure to do step 3.
+5. Log in to the UI using the newly created account.
+
+## API Usage
 
 ### IP Geolocation
 
