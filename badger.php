@@ -116,6 +116,6 @@ if (isset($_REQUEST['beacons'])) {
         <div id="filter"></div>
         <div id="summary"></div>
     </div>
-    <div id="map">Select an Target to begin</div>
+    <div id="map">Select a target to begin.</div>
 </body>
 </html>

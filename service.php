@@ -8,7 +8,7 @@ function addtodb($target, $agent, $ip, $port, $useragent, $comment, $lat, $lng, 
     global $db;
     $stamp = date("m/d/Y H:i:s");
     $prep = $db->prepare("INSERT INTO beacons VALUES (NULL, :stamp, :target, :agent, :ip, :port, :useragent, :comment, :lat, :lng, :acc)");
-    $prep->execute(array(":stamp" => $stamp, ":target" => $target, ":agent" => $agent, ":ip" => $ip, ":port" => $port, ":useragent" => htmlspecialchars($useragent), ":comment" => htmlspecialchars($comment), ":lat" => $lat, ":lng" => $lng, ":acc" => $acc));
+    $prep->execute(array(":stamp" => $stamp, ":target" => $target, ":agent" => $agent, ":ip" => $ip, ":port" => $port, ":useragent" => $useragent, ":comment" => $comment, ":lat" => $lat, ":lng" => $lng, ":acc" => $acc));
     logger(sprintf('[*] Target location identified as Lat: %s, Lng: %s', $lat, $lng));
 }
 
@@ -115,10 +115,9 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
     $target      = sanitize($_REQUEST['target']);
     $agent       = sanitize($_REQUEST['agent']);
 
-    // "comment" and "useragent" are not sanitized b/c they are
-    // html entity encoded before being stored in the database
+    // "comment" and "useragent" are html entity encoded rather than sanitized
     if (isset($_REQUEST['comment'])) {
-        $comment = base64_decode($_REQUEST['comment']);
+        $comment = htmlspecialchars(base64_decode($_REQUEST['comment']));
     } else {
         $comment = '';
     }
@@ -129,7 +128,7 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
     }
     $ip          = $_SERVER['REMOTE_ADDR'];
     $port        = $_SERVER['REMOTE_PORT'];
-    $useragent   = $_SERVER['HTTP_USER_AGENT'];
+    $useragent   = htmlspecialchars($_SERVER['HTTP_USER_AGENT']);
     logger(sprintf('[*] Connection from %s @ %s:%s via %s', $target, $ip, $port, $agent));
     logger(sprintf('[*] Query String: %s', $querystr));
     logger(sprintf('[*] User-Agent: %s', $useragent));
