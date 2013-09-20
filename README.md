@@ -18,9 +18,10 @@ The associated Metasploit Framework modules can be found [here](https://github.c
 
 1. Copy the contents of the repository into the server/virtual host web root.
 2. Configure the web server/virtual host to restrict direct access to the "include", "data" and "admin" directories. See "admin/vhost_config.txt" for an example Apache virtual host configuration file.
-3. Initialize the database and logging system by visiting the UI in a browser.
-4. Create a user with the "create_user.py" script in the "admin" directory. If this fails, it is most likely due to a missing pre-requisite or failure to do step 3.
-5. Log in to the UI using the newly created account.
+3. Create a directory called data in the web root and make it writable by the user the web server is running as.
+4. Initialize the database and logging system by visiting the UI in a browser.
+5. Create a user with the "create_user.py" script in the "admin" directory. If this fails, it is most likely due to a missing pre-requisite or failure to do step 3.
+6. Log in to the UI using the newly created account.
 
 ## API Usage
 
