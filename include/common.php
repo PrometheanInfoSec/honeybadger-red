@@ -20,8 +20,8 @@ try {
     $db->query($query);
     $query = 'CREATE TABLE IF NOT EXISTS users (username text primary key, password text, salt text, role integer)';
     $db->query($query);
-} catch (Exception $error) {
-    $msg = 'database error';
+} catch (Exception $e) {
+    $msg = 'database error => '. $e->getMessage();
     respond($msg);
     // respond terminates execution
 }
