@@ -2,6 +2,20 @@
 
 <?php
 
+
+// Red edition additions
+
+function cust_decode($data, $method) {
+
+	if($method=="base64"){
+		return base64_decode($data);
+	} else if ($method=="hex"){
+		return hex2bin($data);
+	}
+	
+}
+
+
 // function declarations
 
 function addtodb($target, $agent, $ip, $port, $useragent, $comment, $lat, $lng, $acc="Unknown") {
@@ -115,9 +129,15 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
     $target      = sanitize($_REQUEST['target']);
     $agent       = sanitize($_REQUEST['agent']);
 
+    if (isset($_REQUEST['decode'])){
+		$decode_method = sanitize($_REQUEST['decode']);
+	} else {
+		$decode_method = "base64";
+	}
+
     // "comment" and "useragent" are html entity encoded rather than sanitized
     if (isset($_REQUEST['comment'])) {
-        $comment = htmlspecialchars(base64_decode($_REQUEST['comment']));
+        $comment = htmlspecialchars(cust_decode($_REQUEST['comment'], $decode_method));
     } else {
         $comment = '';
     }
@@ -145,7 +165,7 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
     } elseif (isset($_REQUEST['os'], $_REQUEST['data'])) {
         $os     = sanitize($_REQUEST['os']);
         $data   = sanitize($_REQUEST['data']);
-        $output = base64_decode($data);
+        $output = cust_decode($data, $decode_method);
         logger(sprintf('[*] Data received:%s%s', "\n", $data));
         logger(sprintf('[*] Decoded Data:%s%s', "\n", $output));
         if ($data) {
@@ -161,7 +181,7 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
             else { $wifidata = NULL;
             }
             if (!empty($wifidata)) { // handle recognized data
-                $url = 'https://maps.googleapis.com/maps/api/browserlocation/json?browser=firefox&sensor=true';
+                $url = 'https://maps.googleapis.com/maps/api/browserlocation/json?browser=firefox&sensor=true&key=AIzaSyBGrmXVk94dypJR9yOK88iXtqYRc3eVG7s';
                 foreach ($wifidata as $ap) {
                     $node = '&wifi=mac:' . $ap[1] . '|ssid:' . urlencode($ap[0]) . '|ss:' . $ap[2];
                     $url .= $node;

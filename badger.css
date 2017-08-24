@@ -21,7 +21,7 @@ a {
     border-radius: 10px;
 }
 .shaded {
-    border: 1px solid orange;
+    border: 1px solid #ae0000;
     -webkit-box-shadow: 3px 3px 3px gray;
     -moz-box-shadow: 3px 3px 3px gray;
     box-shadow: 3px 3px 3px gray;
@@ -72,7 +72,7 @@ a {
     padding: 10px;
     text-align: center;
     color: white;
-    border: 2px solid orange;
+    border: 2px solid #ae0000;
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0);
     /* RGBa opacity */
@@ -103,7 +103,7 @@ a {
     text-align: center;
     /*width: 160px;*/
     color: white;
-    border: 2px solid orange;
+    border: 2px solid #ae0000;
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0);
     /* RGBa opacity */
