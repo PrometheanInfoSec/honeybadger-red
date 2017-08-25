@@ -181,14 +181,45 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
             else { $wifidata = NULL;
             }
             if (!empty($wifidata)) { // handle recognized data
-                $url = 'https://maps.googleapis.com/maps/api/browserlocation/json?browser=firefox&sensor=true&key=AIzaSyBGrmXVk94dypJR9yOK88iXtqYRc3eVG7s';
+                //$url = 'https://maps.googleapis.com/maps/api/browserlocation/json?browser=firefox&sensor=true&key=AIzaSyBGrmXVk94dypJR9yOK88iXtqYRc3eVG7s';
+		$url = 'https://www.googleapis.com/geolocation/v1/geolocate??key=AIzaSyArMHOD20PfDnS51_HzIu4xLW3RFplDcwA';
+
+		//Old API
+		/*
                 foreach ($wifidata as $ap) {
                     $node = '&wifi=mac:' . $ap[1] . '|ssid:' . urlencode($ap[0]) . '|ss:' . $ap[2];
                     $url .= $node;
                 }
-                $slicedurl = substr($url,0,1900);
-                $jsondata = getJSON($slicedurl);
-                if (!is_null(json_decode($jsondata))) {
+                $slicedurl = substr($url,0,1900);*/
+
+		
+
+                //$jsondata = getJSON($slicedurl);
+		
+		$data = array("wifiAccessPoints" => array());
+
+		foreach ($wifidata as $ap) {
+			$apar = array("macAddress"=>$ap[1],"signalStrength"=>$ap[2]);
+			array_push($data['wifiAccessPoints'], $apar);
+		}                
+
+		$data_string = json_encode($data);                                                                                   
+		logger($data_string);
+                                                                                                                     
+		$ch = curl_init($url);
+		logger("0");
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		logger("1");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_string)));          
+
+
+		$result = curl_exec($ch);
+
+		logger("RESULT: ". $result);
+
+		if (!is_null(json_decode($result))) {
                     $jsondecoded = json_decode($jsondata);
                     if ($jsondecoded->status != "ZERO_RESULTS") {
                         $acc = $jsondecoded->accuracy;
