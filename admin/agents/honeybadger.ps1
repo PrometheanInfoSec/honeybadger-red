@@ -1,4 +1,4 @@
-$HONEYBADGER = "http://jamesallsup.com/service.php"
+$HONEYBADGER = "https://prometheaninfosec.com/honeybadger-red/service.php"
 $TARGET = "My Target"
 
 $comment = "NULL"
