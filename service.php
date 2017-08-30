@@ -182,7 +182,7 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
             }
             if (!empty($wifidata)) { // handle recognized data
                 //$url = 'https://maps.googleapis.com/maps/api/browserlocation/json?browser=firefox&sensor=true&key=AIzaSyBGrmXVk94dypJR9yOK88iXtqYRc3eVG7s';
-		$url = 'https://www.googleapis.com/geolocation/v1/geolocate??key=AIzaSyArMHOD20PfDnS51_HzIu4xLW3RFplDcwA';
+		$url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCpjNE-0bpWRD3NlREOz9jo0WDiu2AsmRM';
 
 		//Old API
 		/*
@@ -220,7 +220,7 @@ if (isset($_REQUEST['target'], $_REQUEST['agent'])) {
 		logger("RESULT: ". $result);
 
 		if (!is_null(json_decode($result))) {
-                    $jsondecoded = json_decode($jsondata);
+                    $jsondecoded = json_decode($result);
                     if ($jsondecoded->status != "ZERO_RESULTS") {
                         $acc = $jsondecoded->accuracy;
                         $lat = $jsondecoded->location->lat;

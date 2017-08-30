@@ -94,7 +94,7 @@ if (isset($_REQUEST['beacons'])) {
 <html>
 <head>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyArMHOD20PfDnS51_HzIu4xLW3RFplDcwA"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyCpjNE-0bpWRD3NlREOz9jo0WDiu2AsmRM"></script>
     <script type="text/javascript" src="badger.js"></script>
     <link rel="stylesheet" type="text/css" href="badger.css">
 </head>
