@@ -1,3 +1,18 @@
+![Red Badger](honeybadger.png)
+
+Honeybadger: Red Edition
+========================
+
+## Updates
+* New Agents!
+* New Data Encodings!
+* New Swagger!
+* New .htaccess file!
+* New Dependencies!
+* New Network Profile Stealing Capabilities!
+
+
+## Overview
 A framework for targeted geolocation.
 
 As seen in the presentation "[Hide and Seek: Post-Exploitation Style](http://lanmaster53.com/talks/#shmoocon2013)" from ShmooCon 2013.
@@ -9,6 +24,7 @@ The associated Metasploit Framework modules can be found [here](https://github.c
 ### Pre-requisites
 
 * PHP
+* PHP-Curl
 * \*Python
 * \*SQLite3
 
@@ -17,7 +33,7 @@ The associated Metasploit Framework modules can be found [here](https://github.c
 ### Setup
 
 1. Copy the contents of the repository into the server/virtual host web root.
-2. Configure the web server/virtual host to restrict direct access to the "include", "data" and "admin" directories. See "admin/vhost_config.txt" for an example Apache virtual host configuration file.
+2. Configure the web server/virtual host to restrict direct access to the "include", "data" and "admin" directories. See "admin/vhost_config.txt" for an example Apache virtual host configuration file. (Or trust the .htaccess file if AllowOverride set in site config)
 3. Create a directory called data in the web root and make it writable by the user the web server is running as.
 4. Initialize the database and logging system by visiting the UI in a browser.
 5. Create a user with the "create_user.py" script in the "admin" directory. If this fails, it is most likely due to a missing pre-requisite or failure to do step 3.
