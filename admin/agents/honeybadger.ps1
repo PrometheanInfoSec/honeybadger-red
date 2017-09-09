@@ -1,5 +1,5 @@
-$HONEYBADGER = "https://prometheaninfosec.com/honeybadger-red/service.php"
-$TARGET = "My Target"
+$HONEYBADGER = "placeholder.placeholder.placeholder"
+$TARGET = "target.placeholder"
 
 $comment = "NULL"
 ###Uncomment two below lines to enable network profile stealing

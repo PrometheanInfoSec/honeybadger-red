@@ -1,7 +1,7 @@
 #!/bin/bash
 
-honeybadger_url="https://prometheaninfosec.com/honeybadger-red/service.php"
-target="mytarget"
+honeybadger_url="placeholder.placeholder.placeholder"
+target="target.placeholder"
 
 
 agent="linuxbash"

